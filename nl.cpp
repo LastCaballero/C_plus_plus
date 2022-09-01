@@ -10,7 +10,7 @@ using namespace std;
 string line ;
 
 void output ( queue<string> *q ) {
-		int width = to_string(q->size()).length() ;
+	int width = to_string(q->size()).length() ;
         string format("%" + to_string(width) + "d %s\n");
         for ( int i = 0 ; i <= q->size() ; i++ ) {
                 printf( format.c_str() , i, q->front().c_str() );
