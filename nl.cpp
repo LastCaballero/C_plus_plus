@@ -10,7 +10,7 @@ using namespace std;
 string line ;
 
 void output ( queue<string> *q ) {
-	int width = to_string(q->size()).length() ;
+		int width = to_string(q->size()).length() ;
         string format("%" + to_string(width) + "d %s\n");
         for ( int i = 0 ; i <= q->size() ; i++ ) {
                 printf( format.c_str() , i, q->front().c_str() );
@@ -35,7 +35,6 @@ void do_file ( ifstream *file ) {
 int main (int count, char *args[]) {
 	if ( ! isatty(fileno(stdin)) ) 
 		do_stdin() ;
-	int *i = new int(1);
 	if ( count > 1 ) {
 		for( int i = 1 ; i < count ; i++ ) {
 			ifstream *pfile = new ifstream(args[i]) ;
