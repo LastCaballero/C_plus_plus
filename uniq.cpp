@@ -55,5 +55,6 @@ int main ( int count , char *args[] ) {
 	}
 
 	print_out( uniqs ) ;
+	return 0 ;
 
 }
