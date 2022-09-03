@@ -11,8 +11,7 @@ int do_stdin( set<string> *un ) {
 	
 	string *line = new string();
 	
-	while ( getline( cin, *line ) )
-						un->insert( *line ) ;
+	while ( getline( cin, *line ) ) un->insert( *line ) ;
 	
 	return 1 ;
 }
@@ -22,8 +21,7 @@ int do_file( ifstream *file, set<string> *un ) {
 	
 	string *line = new string() ;
 	
-	while ( getline( *file, *line ) )
-                		un->insert( *line ) ;
+	while ( getline( *file, *line ) ) un->insert( *line ) ;
 	
 	return 1 ;
 
@@ -41,8 +39,7 @@ int main ( int count , char *args[] ) {
 	
 	set<string> *uniqs = new set<string>() ;
 	
-	if ( ! isatty( fileno(stdin) ) )
-							do_stdin( uniqs ) ;
+	if ( ! isatty( fileno(stdin) ) ) do_stdin( uniqs ) ;
 	
 	for ( int i = 1 ; i < count ; i++ ) {
 
