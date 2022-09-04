@@ -66,7 +66,7 @@ int do_file ( ifstream *file ) {
 int main(int count, char *args[])
 {
 	if (! isatty(fileno( stdin )) )
-							do_pipe () ;
+				do_pipe () ;
 	
     if (count > 1) {
         for (int i = 1; i < count; i++) {
