@@ -1,7 +1,10 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <set>
 #include <vector>
+#include <unistd.h>
+
 using namespace std;
 
 vector<string> *strings = new vector<string>{
@@ -46,12 +49,34 @@ int output()
     return 1;
 }
 
+int do_pipe () {
+	string *line = new string () ;
+	while ( getline ( cin, *line ) )
+		strings->push_back( *line ) ;
+	return 1 ;
+}
+
+int do_file ( ifstream *file ) {
+	string *line = new string () ;
+	while ( getline ( *file, *line ) )
+		strings->push_back( *line ) ;
+	return 1 ;
+}
+
 int main(int count, char *args[])
 {
-
-    if (count > 1)
-        for (int i = 1; i < count; i++)
-            strings->push_back(args[i]);
+	if (! isatty(fileno( stdin )) )
+							do_pipe () ;
+	
+    if (count > 1) {
+        for (int i = 1; i < count; i++) {
+            ifstream *file = new ifstream(args[i]) ;
+				if ( *file )
+					do_file ( file );
+				else
+					strings->push_back(args[i]);
+		}
+	}
 
     insert();
     output();
