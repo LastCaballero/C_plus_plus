@@ -3,6 +3,7 @@
 #include <string>
 #include <set>
 #include <vector>
+#include <iterator>
 #include <unistd.h>
 
 using namespace std;
@@ -30,7 +31,7 @@ int insert()
     for (string s : *strings)
     {
 
-        if (s.find(" ") < s.length())
+        while (s.find(" ") < s.size())
             s = s.replace(s.find(" "), 1, "");
 
         se1->insert(s.insert(0, *sep));
@@ -66,7 +67,7 @@ int do_file ( ifstream *file ) {
 int main(int count, char *args[])
 {
 	if (! isatty(fileno( stdin )) )
-				do_pipe () ;
+							do_pipe () ;
 	
     if (count > 1) {
         for (int i = 1; i < count; i++) {
@@ -83,3 +84,18 @@ int main(int count, char *args[])
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
