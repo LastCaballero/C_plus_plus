@@ -3,10 +3,11 @@
 #include <string>
 #include <set>
 #include <vector>
-#include <iterator>
 #include <unistd.h>
 
 using namespace std;
+
+bool middle = false ;
 
 vector<string> *strings = new vector<string>{
     "Programmierer",
@@ -33,8 +34,11 @@ int insert()
 
         while (s.find(" ") < s.size())
             s = s.replace(s.find(" "), 1, "");
-
-        se1->insert(s.insert(0, *sep));
+        if ( ! middle)
+            se1->insert(s.insert(0, *sep));
+        else
+            se1->insert(s.append(",")) ; 
+        
     }
     return 1;
 }
@@ -50,52 +54,51 @@ int output()
     return 1;
 }
 
-int do_pipe () {
-	string *line = new string () ;
-	while ( getline ( cin, *line ) )
-		strings->push_back( *line ) ;
-	return 1 ;
+int do_pipe()
+{
+    string *line = new string();
+    while (getline(cin, *line))
+        strings->push_back(*line);
+    return 1;
 }
 
-int do_file ( ifstream *file ) {
-	string *line = new string () ;
-	while ( getline ( *file, *line ) )
-		strings->push_back( *line ) ;
-	return 1 ;
+int do_file(ifstream *file)
+{
+    string *line = new string();
+    while (getline(*file, *line))
+        strings->push_back(*line);
+    return 1;
 }
 
 int main(int count, char *args[])
 {
-	if (! isatty(fileno( stdin )) )
-							do_pipe () ;
-	
-    if (count > 1) {
-        for (int i = 1; i < count; i++) {
-            ifstream *file = new ifstream(args[i]) ;
-				if ( *file )
-					do_file ( file );
-				else
-					strings->push_back(args[i]);
-		}
-	}
+
+
+
+    if (!isatty(fileno(stdin)))
+        do_pipe();
+
+    if (count > 1)
+    {
+        for (int i = 1; i < count; i++)
+        {  
+            if ( string(args[i]) == "-m") { 
+                middle = true ; 
+                continue ; 
+            }
+
+            ifstream *file = new ifstream(args[i]);
+            if (*file)
+                do_file(file);
+            else
+                strings->push_back(args[i]);
+        }
+    }
 
     insert();
     output();
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
