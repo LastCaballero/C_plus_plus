@@ -9,8 +9,6 @@ using namespace std ;
 const int l_width = 10 ;
 const int r_width = 35 ;
 
-
-
 void out_oct(int & number) {
     
     cout.width(l_width) ;
@@ -37,14 +35,8 @@ void out_bit(int & number){
 }
 
 
-
-
-
-
-
 int main (int count, char *args[]){
     
-
     if (count < 2 ) {
         cout << "we need a number..." << endl ;
         return 1 ;
