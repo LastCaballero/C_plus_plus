@@ -67,5 +67,5 @@ void output_oct (int & number) {
 }
 
 void output_bin (int & number) {
-    cout << bitset<8>(number) << endl ;
+    cout << bitset<32>(number) << endl ;
 }
