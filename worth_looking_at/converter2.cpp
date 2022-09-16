@@ -1,7 +1,6 @@
 # include <iostream>
 # include <iomanip>
 # include <vector>
-# include <array>
 # include <ios>
 # include <bitset>
 
