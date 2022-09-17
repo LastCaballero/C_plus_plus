@@ -4,7 +4,7 @@
 using namespace std ;
 
 
-array<int,20> 		ints ;
+array<int,20> ints ;
 array<string,20> strings ;
 
 void fill_arrays () {
