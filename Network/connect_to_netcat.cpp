@@ -20,7 +20,7 @@ bool create_home_socket () {
         return false ;
 }
 
-int check_server_address () {
+bool check_server_address () {
     server.sin_family = AF_INET ;
     server.sin_port = htons(port) ;
     int back = inet_pton( AF_INET, host.c_str() , & server.sin_addr ) ;
